@@ -1,12 +1,25 @@
 'use client';
 
-//import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import { Navigation } from '@/components/layout/Navigation';
 import { HeroSection } from '@/components/portfolio/HeroSection';
 import { WhatsAppButton } from '@/components/portfolio/WhatsAppButton';
-import { PremiumLoader } from '@/components/portfolio/PremiumLoader';
-import { ScrollProgress } from '@/components/portfolio/ScrollProgress';
-import { ParticleBackground } from '@/components/portfolio/ParticleBackground';
+
+// Client-only components (use Math.random or browser APIs)
+const PremiumLoader = dynamic(
+  () => import('@/components/portfolio/PremiumLoader').then(mod => ({ default: mod.PremiumLoader })),
+  { ssr: false }
+);
+
+const ScrollProgress = dynamic(
+  () => import('@/components/portfolio/ScrollProgress').then(mod => ({ default: mod.ScrollProgress })),
+  { ssr: false }
+);
+
+const ParticleBackground = dynamic(
+  () => import('@/components/portfolio/ParticleBackground').then(mod => ({ default: mod.ParticleBackground })),
+  { ssr: false }
+);
 
 // Lazy load non-critical components for better performance
 const PositioningSection = dynamic(
@@ -59,19 +72,13 @@ const Footer = dynamic(
   { loading: () => <div className="min-h-[20vh]" /> }
 );
 
-// Custom cursor - only load on desktop
-const CustomCursor = dynamic(
-  () => import('@/components/portfolio/CustomCursor').then(mod => ({ default: mod.CustomCursor })),
-  { ssr: false }
-);
-
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
       {/* Premium Loader */}
       <PremiumLoader />
       
-      {/* Custom Cursor - Desktop only */}
+      {/* Custom Cursor - DISABLED for performance */}
       {/* <CustomCursor /> */}
       
       {/* Scroll Progress */}

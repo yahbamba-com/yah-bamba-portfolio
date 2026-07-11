@@ -95,13 +95,13 @@ export function ExpertiseSection() {
                     <area.icon className="w-5 h-5" style={{ color: area.color }} />
                   </div>
                   <h3 className="text-lg font-semibold text-white">
-                    {t.expertise[area.key as keyof typeof t.expertise]?.title}
+                    {(t.expertise[area.key as keyof typeof t.expertise] as { title: string; items: string[] })?.title}
                   </h3>
                 </div>
 
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {t.expertise[area.key as keyof typeof t.expertise]?.items?.map((tech: string, i: number) => (
+                  {((t.expertise[area.key as keyof typeof t.expertise] as { title: string; items: string[] })?.items ?? []).map((tech: string, i: number) => (
                     <motion.span
                       key={i}
                       initial={{ opacity: 0, scale: 0.8 }}

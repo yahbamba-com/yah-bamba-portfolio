@@ -80,7 +80,7 @@ export function DifferentiationSection() {
                       <item.icon className="w-5 h-5" style={{ color: item.color }} />
                     </div>
                     <span className="text-white/80 text-sm font-medium">
-                      {t.differentiation.points[item.key as keyof typeof t.differentiation.points]}
+                      {(t.differentiation.points as any)[item.key]}
                     </span>
                   </motion.div>
                 ))}
@@ -109,7 +109,7 @@ export function DifferentiationSection() {
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-red-400/50" />
                     <span className="text-sm">
-                      {t.differentiation.refused[item.key as keyof typeof t.differentiation.refused]}
+                      {(t.differentiation.refused as any)[item.key]}
                     </span>
                   </motion.div>
                 ))}
