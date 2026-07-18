@@ -15,6 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yahbamba.com"),
   title: "Yah Bamba | Architecte de Solutions Digitales & Financières",
   description: "Expert fullstack spécialisé en systèmes web, mobile, intelligence artificielle et fintech. Je conçois des solutions digitales sur mesure qui transforment des idées en entreprises performantes.",
   keywords: ["Yah Bamba", "Développeur Web", "Développeur Mobile", "Fintech", "IA", "Côte d'Ivoire", "Freelance", "Fullstack", "React", "Next.js", "Flutter", "Portfolio"],
