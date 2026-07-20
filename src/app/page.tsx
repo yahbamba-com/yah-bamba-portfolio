@@ -1,9 +1,50 @@
-'use client';
+﻿'use client';
 
 import dynamic from 'next/dynamic';
 import { Navigation } from '@/components/layout/Navigation';
 import { HeroSection } from '@/components/portfolio/HeroSection';
 import { WhatsAppButton } from '@/components/portfolio/WhatsAppButton';
+
+// Données structurées pour Google et les IA
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://yahbamba.com/#person',
+      'name': 'Yah Bamba',
+      'jobTitle': 'Freelance Full-Stack Web & Mobile Developer',
+      'url': 'https://yahbamba.com',
+      'sameAs': [
+        'https://github.com/yahbamba-com'
+      ],
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Abidjan',
+        'addressCountry': 'CI'
+      },
+      'knowsAbout': [
+        'Web Development',
+        'Mobile Development',
+        'TypeScript',
+        'React',
+        'Next.js',
+        'Flutter',
+        'Firebase'
+      ]
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://yahbamba.com/#website',
+      'url': 'https://yahbamba.com',
+      'name': 'Yah Bamba | Portfolio',
+      'description': 'Portfolio de Yah Bamba, développeur full-stack web et mobile expert à Abidjan, Côte d\'Ivoire.',
+      'publisher': {
+        '@id': 'https://yahbamba.com/#person'
+      }
+    }
+  ]
+};
 
 // Client-only components (use Math.random or browser APIs)
 const PremiumLoader = dynamic(
@@ -74,57 +115,62 @@ const Footer = dynamic(
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
-      {/* Premium Loader */}
-      <PremiumLoader />
-      
-      {/* Custom Cursor - DISABLED for performance */}
-      {/* <CustomCursor /> */}
-      
-      {/* Scroll Progress */}
-      <ScrollProgress />
-      
-      {/* Particle Background */}
-      <ParticleBackground />
-      
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Hero Section - Critical, load immediately */}
-      <HeroSection />
-      
-      {/* Positioning Section */}
-      <PositioningSection />
-      
-      {/* Journey / About Section */}
-      <JourneySection />
-      
-      {/* Differentiation Section */}
-      <DifferentiationSection />
-      
-      {/* Services Section */}
-      <ServicesSection />
-      
-      {/* Technical Expertise Section */}
-      <ExpertiseSection />
-      
-      {/* Work Process Section */}
-      <ProcessSection />
-      
-      {/* Projects Section */}
-      <ProjectsSection />
-      
-      {/* Testimonials Section */}
-      <TestimonialsSection />
-      
-      {/* Contact Section */}
-      <ContactSection />
-      
-      {/* Footer */}
-      <Footer />
-      
-      {/* WhatsApp Floating Button */}
-      <WhatsAppButton />
-    </main>
+    <>
+      {/* Injection des données structurées JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <main className="relative min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
+        {/* Premium Loader */}
+        <PremiumLoader />
+        
+        {/* Scroll Progress */}
+        <ScrollProgress />
+        
+        {/* Particle Background */}
+        <ParticleBackground />
+        
+        {/* Navigation */}
+        <Navigation />
+        
+        {/* Hero Section - Critical, load immediately */}
+        <HeroSection />
+        
+        {/* Positioning Section */}
+        <PositioningSection />
+        
+        {/* Journey / About Section */}
+        <JourneySection />
+        
+        {/* Differentiation Section */}
+        <DifferentiationSection />
+        
+        {/* Services Section */}
+        <ServicesSection />
+        
+        {/* Technical Expertise Section */}
+        <ExpertiseSection />
+        
+        {/* Work Process Section */}
+        <ProcessSection />
+        
+        {/* Projects Section */}
+        <ProjectsSection />
+        
+        {/* Testimonials Section */}
+        <TestimonialsSection />
+        
+        {/* Contact Section */}
+        <ContactSection />
+        
+        {/* Footer */}
+        <Footer />
+        
+        {/* WhatsApp Floating Button */}
+        <WhatsAppButton />
+      </main>
+    </>
   );
 }
